@@ -34,7 +34,7 @@ trigger the release pipeline.
 4. A human has to press the button to accept the auto-generated PR on conda-forge.
 
 ## Report bugs using Github's [issues](https://github.com/startable/pdtable/issues)
-We use GitHub issues to track bugs. Report a bug by [opening a new issue](); it's that easy!
+We use GitHub issues to track bugs. Report a bug by [opening a new issue](https://github.com/startable/pdtable/issues/new); it's that easy!
 
 ## Write bug reports with detail, background, and sample code
 
