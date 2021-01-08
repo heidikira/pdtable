@@ -287,9 +287,9 @@ a dictionary or index access.  It uses the ``BlockIterator`` output from ``read_
     )
 
     # TableBundle creates a dictionary like way to access the read in Tables
-    tables = TableBundle(read_csv(csv_data))
+    bundle = TableBundle(read_csv(csv_data))
     # Disregards other blocks that are not tables
-    assert len(tables) == 2
+    assert len(bundle) == 2
     # Can be indexed either by name or by order read in
-    assert tables['first_table'] == tables[0]
-    assert tables['second_table'] == tables[1]
+    assert bundle['first_table'] == bundle[0]
+    assert bundle['second_table'] == bundle[1]
