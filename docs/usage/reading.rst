@@ -21,6 +21,7 @@ that stream. (Reading from a CSV file is no different.)
 
     from io import StringIO
     from pdtable import read_csv
+    from textwrap import dedent
     
     csv_data = StringIO(
         dedent(
@@ -245,3 +246,50 @@ contains an ``include`` directive pointing to ``foo.csv`` then calling
 overflow. You may want to perform such a check if relevant for your
 application.
 
+Reading into a TableBundle
+--------------------------
+
+By creating a ``TableBundle``, it is possible to easily access the various tables (ie. ``BlockType == TABLE``) via
+a dictionary or index access.  It uses the ``BlockIterator`` output from ``read_excel`` or ``read_csv`` as its input.
+
+.. code:: python
+
+    from io import StringIO
+    from pdtable import read_csv, TableBundle
+    from textwrap import dedent
+
+    csv_data = StringIO(
+        dedent(
+            """\
+        author: ;HSOLO     ;
+
+        ***my_directive_block
+        tables here to show how to use TableBundle
+
+        **first_table;
+        all
+        name;commute;mode
+        text;km;text
+        Charles;0.5;walk
+        Anne-belle;17;electric bike
+        Guillerme;45;train
+
+        **second_table;;;
+        destination_overdrive;;;
+        vehicle;range;
+        text;km;
+        car;300;
+        bike;12;
+        electric bike; 20;
+        pogo; -1
+        """
+        )
+    )
+
+    # TableBundle creates a dictionary like way to access the read in Tables
+    tables = TableBundle(read_csv(csv_data))
+    # Disregards other blocks that are not tables
+    assert len(tables) == 2
+    # Can be indexed either by name or by order read in
+    assert tables['first_table'] == tables[0]
+    assert tables['second_table'] == tables[1]

@@ -200,7 +200,7 @@ is on metadata.
 The ``TableDataFrame`` aspect
 -----------------------------
 
-Both the table contents and metadata displayed and manipulated throught
+Both the table contents and metadata displayed and manipulated through
 the ``Table``-class is stored as a ``TableDataFrame`` object, which is a
 normal pandas dataframe with two modifications:
 
@@ -235,7 +235,7 @@ normal pandas dataframe with two modifications:
 
 .. code:: ipython3
 
-    # Interacting with table metadata form  without the Table proxy is slightly verbose
+    # Interacting with table metadata without the Table proxy is slightly verbose
     df2 = frame.make_table_dataframe(
         pd.DataFrame({"c": [1, 2, 3], "d": [4, 5, 6]}), name="table2", units=["m", "kg"]
     )
